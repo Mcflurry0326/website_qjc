@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>邱嘉诚的主页</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .fade-in { opacity: 0; transform: translateY(20px); transition: all 1s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+  </style>
+  <script>
+    const languages = ['zh', 'en'];
+    function switchLanguage(lang) {
+      document.querySelectorAll('[data-lang-zh]').forEach(el => {
+        if (lang === 'zh') {
+          el.textContent = el.dataset.langZh;
+        } else {
+          const targetAttr = 'lang' + lang.charAt(0).toUpperCase() + lang.slice(1);
+          if (el.dataset[targetAttr]) {
+            el.textContent = el.dataset[targetAttr];
+          }
+        }
+      });
+    }
+    function detectBrowserLanguage() {
+      const userLang = navigator.language.slice(0, 2);
+      if (languages.includes(userLang)) switchLanguage(userLang);
+    }
+    window.addEventListener('DOMContentLoaded', detectBrowserLanguage);
+    window.addEventListener('scroll', () => {
+      document.querySelectorAll('.fade-in').forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 50) {
+          el.classList.add('visible');
+        }
+      });
+    });
+  </script>
+</head>
+<body class="bg-gray-900 text-gray-100">
+
+<!-- Navbar -->
+<nav class="fixed w-full bg-gray-800 bg-opacity-90 shadow-md z-50">
+  <div class="max-w-6xl mx-auto px-4 py-3 flex justify-end items-center">
+    <div class="space-x-6 flex items-center">
+      <a href="#about" class="hover:text-yellow-400 transition" data-lang-zh="关于我" data-lang-en="About">关于我</a>
+      <a href="#education" class="hover:text-yellow-400 transition" data-lang-zh="教育背景" data-lang-en="Education">教育背景</a>
+      <a href="#research" class="hover:text-yellow-400 transition" data-lang-zh="研究兴趣" data-lang-en="Research">研究兴趣</a>
+      <a href="#notes" class="hover:text-yellow-400 transition" data-lang-zh="学习笔记" data-lang-en="Notes">学习笔记</a>
+      <a href="#hobbies" class="hover:text-yellow-400 transition" data-lang-zh="业余爱好" data-lang-en="Hobbies">业余爱好</a>
+      <a href="#contact" class="hover:text-yellow-400 transition" data-lang-zh="联系我" data-lang-en="Contact">联系我</a>
+      <select onchange="switchLanguage(this.value)" class="ml-4 px-3 py-1 border border-yellow-400 text-yellow-400 bg-transparent rounded hover:bg-yellow-400 hover:text-gray-800 transition">
+        <option value="zh">🌐 中文</option>
+        <option value="en">🌐 English</option>
+      </select>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="min-h-screen flex flex-col justify-center items-center text-center pt-32 bg-gradient-to-b from-gray-900 to-gray-800">
+  <img src="profile.jpg" alt="Profile" class="w-48 h-auto object-cover rounded-lg shadow-lg mb-6 fade-in">
+  <h1 class="text-4xl md:text-5xl font-extrabold mb-4 fade-in" data-lang-zh="我们总是以概率一不断前进，美好的回忆亦是常返态" data-lang-en="We always move forward with probability one, while beautiful memories tend to recur.">
+    我们总是以概率一不断前进，美好的回忆亦是常返态
+  </h1>
+  <p class="text-xl text-gray-400 fade-in" data-lang-zh="你好，我是邱嘉诚，很高兴遇见你！" data-lang-en="Hello, I'm Jiacheng Qiu. Nice to meet you!">
+    你好，我是邱嘉诚，很高兴遇见你！
+  </p>
+</section>
+
+<!-- 关于我 -->
+<section id="about" class="max-w-4xl mx-auto py-20 px-6">
+  <h2 class="text-3xl font-bold mb-10 text-center fade-in" data-lang-zh="关于我" data-lang-en="About Me">关于我</h2>
+  <p class="text-lg text-center fade-in" data-lang-zh="我是一名数学背景的研究生，热爱金融数学与随机分析。致力于将理论与现实结合。" data-lang-en="A graduate student with a mathematics background, passionate about financial mathematics and stochastic analysis.">
+    我是一名数学背景的研究生，热爱金融数学与随机分析。致力于将理论与现实结合。
+  </p>
+</section>
+
+<!-- 教育背景 -->
+<section id="education" class="bg-gray-800 py-20">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="text-3xl font-bold mb-10 text-center fade-in" data-lang-zh="教育背景" data-lang-en="Education">教育背景</h2>
+    <div class="space-y-6">
+      <div class="bg-gray-700 p-6 rounded-lg shadow-lg fade-in">
+        <h3 class="text-2xl font-semibold mb-2" data-lang-zh="武汉大学" data-lang-en="Wuhan University">武汉大学</h3>
+        <p data-lang-zh="硕士研究生 · 概率论与数理统计 · 2024 至今" data-lang-en="MSc in Probability and Mathematical Statistics · 2024–Present">硕士研究生 · 概率论与数理统计 · 2024 至今</p>
+      </div>
+      <div class="bg-gray-700 p-6 rounded-lg shadow-lg fade-in">
+        <h3 class="text-2xl font-semibold mb-2" data-lang-zh="武汉大学" data-lang-en="Wuhan University">武汉大学</h3>
+        <p data-lang-zh="理学学士 · 数学与应用数学 · 2020 - 2024" data-lang-en="BSc in Mathematics and Applied Mathematics · 2020–2024">理学学士 · 数学与应用数学 · 2020 - 2024</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 研究兴趣 -->
+<section id="research" class="bg-gray-900 py-20">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <h2 class="text-3xl font-bold mb-10 fade-in" data-lang-zh="研究兴趣" data-lang-en="Research Interests">研究兴趣</h2>
+    <div class="flex justify-center gap-6 flex-wrap">
+      <div class="bg-gray-700 rounded-lg p-6 shadow-lg hover:scale-105 transform transition fade-in" data-lang-zh="金融数学" data-lang-en="Financial Mathematics">金融数学</div>
+      <div class="bg-gray-700 rounded-lg p-6 shadow-lg hover:scale-105 transform transition fade-in" data-lang-zh="随机分析" data-lang-en="Stochastic Analysis">随机分析</div>
+    </div>
+  </div>
+</section>
+
+<!-- 学习笔记 -->
+<section id="notes" class="bg-gray-800 py-20">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-3xl font-bold mb-10 text-center fade-in" data-lang-zh="学习笔记" data-lang-en="Study Notes">学习笔记</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+      <a href="https://github.com/Hiver-Q/Semimartingale-and-Stochastic-Calculus" target="_blank" class="bg-gray-700 p-6 rounded-lg shadow-lg hover:scale-105 transform transition text-yellow-400 fade-in" data-lang-zh="半鞅与随机分析" data-lang-en="Semimartingale and Stochastic Calculus">半鞅与随机分析</a>
+      <div class="bg-gray-700 p-6 rounded-lg shadow-lg hover:scale-105 transform transition text-gray-300 opacity-70 fade-in" data-lang-zh="连续时间套利理论（即将上线）" data-lang-en="Arbitrage Theory (Coming Soon)">连续时间套利理论<br><span class="text-sm text-gray-400">即将上线</span></div>
+      <div class="bg-gray-700 p-6 rounded-lg shadow-lg hover:scale-105 transform transition text-gray-300 opacity-70 fade-in" data-lang-zh="Malliavin 微积分（即将上线）" data-lang-en="Malliavin Calculus (Coming Soon)">Malliavin 微积分<br><span class="text-sm text-gray-400">即将上线</span></div>
+      <div class="bg-gray-700 p-6 rounded-lg shadow-lg hover:scale-105 transform transition text-gray-300 opacity-70 fade-in" data-lang-zh="Stein 方法（即将上线）" data-lang-en="Stein's Method (Coming Soon)">Stein 方法<br><span class="text-sm text-gray-400">即将上线</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 爱好 -->
+<section id="hobbies" class="bg-gray-900 py-20">
+  <div class="max-w-5xl mx-auto px-6 text-center">
+    <h2 class="text-3xl font-bold mb-10 fade-in" data-lang-zh="业余爱好" data-lang-en="Hobbies">业余爱好</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <div class="bg-gray-700 p-6 rounded-lg shadow-lg hover:scale-105 transform transition fade-in" data-lang-zh="书法" data-lang-en="Calligraphy">书法</div>
+      <div class="bg-gray-700 p-6 rounded-lg shadow-lg hover:scale-105 transform transition fade-in" data-lang-zh="阅读" data-lang-en="Reading">阅读</div>
+    </div>
+  </div>
+</section>
+
+<!-- 联系方式 -->
+<section id="contact" class="bg-gray-800 py-20">
+  <div class="max-w-4xl mx-auto text-center px-6 fade-in">
+    <h2 class="text-3xl font-bold mb-6" data-lang-zh="联系我" data-lang-en="Contact Me">联系我</h2>
+    <p class="mb-4" data-lang-zh="欢迎通过邮箱与社交媒体与我联系！" data-lang-en="Feel free to reach out via email or connect with me!">欢迎通过邮箱与社交媒体与我联系！</p>
+    <p>Email: <a href="mailto:hiverq@whu.edu.cn" class="text-yellow-400 hover:underline">hiverq@whu.edu.cn</a></p>
+  </div>
+</section>
+
+<!-- 页脚 -->
+<footer class="text-center text-gray-500 text-sm py-6">
+  &copy; 2025 邱嘉诚. All rights reserved.
+</footer>
+
+</body>
+</html>
+
